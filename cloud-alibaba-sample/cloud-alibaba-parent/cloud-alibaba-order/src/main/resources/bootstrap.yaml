@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: order-service
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        namespace: ae5c422a-5790-4a0a-9e7a-dd7b590f09fd
+        group: DEFAULT_GROUP
+        extension-configs[0]:
+          data-id: common.yaml
+          refresh: true

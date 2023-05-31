@@ -1,0 +1,29 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #??Nacos??
+        namespace: ae5c422a-5790-4a0a-9e7a-dd7b590f09fd
+        #group: DEFAULT_GROUP
+    sentinel:
+      transport:
+        dashboard: localhost:8080 #sentinel dashboard地址
+        port: 8719 #默认占用8719端口,如果8719被占用，依次+1,直到找到可用的端口
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: service1
+          uri: https://www.ebanma.com/
+          predicates:
+            - Path=/bm
+        - id: service3
+          uri: lb://order-service
+          predicates:
+            - Path=/api/order/**
+

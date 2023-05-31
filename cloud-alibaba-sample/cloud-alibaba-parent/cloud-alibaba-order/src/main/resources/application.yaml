@@ -1,0 +1,12 @@
+server:
+  port: ${port:9001}
+
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #配置Nacos地址
+        namespace: ae5c422a-5790-4a0a-9e7a-dd7b590f09fd
+        group: DEFAULT_GROUP
